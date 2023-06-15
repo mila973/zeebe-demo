@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="is-fraud-decision-definition" name="Decide is fraud" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.12.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.2.0">
+  <decision id="is-fraud-decision" name="Is Fraud">
+    <informationRequirement id="InformationRequirement_1ps8b08">
+      <requiredInput href="#InputData_09etuyq" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_080hkjy">
+      <requiredInput href="#InputData_1ewx3am" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1w0uewy" hitPolicy="FIRST">
+      <input id="Input_1" label="Transaction amount">
+        <inputExpression id="InputExpression_1" typeRef="number">
+          <text>transaction.amount</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0lsmsa1" label="Transaction description" biodi:width="368">
+        <inputExpression id="LiteralExpression_03p5jhv" typeRef="string">
+          <text>transaction.description</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1u1a9b4" label="Customer birth date" biodi:width="192">
+        <inputExpression id="LiteralExpression_0tc07fk" typeRef="date">
+          <text>customer.birthDate</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_06kanlf" label="Customer surname">
+        <inputExpression id="LiteralExpression_04v25la" typeRef="string">
+          <text>customer.surname</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Is Fraud" name="isFraud" typeRef="boolean" />
+      <rule id="DecisionRule_0puqok8">
+        <inputEntry id="UnaryTests_1oalglh">
+          <text>&gt; 300</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1votmh3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0j7nf74">
+          <text>date(?) &gt; date("2000-01-01")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uciq2z">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gf1ozk">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12bwmxp">
+        <inputEntry id="UnaryTests_1tolgeb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1895y9d">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sdrlyw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_041tl18">
+          <text>"Simpson"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12w0neu">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0koh2p8">
+        <inputEntry id="UnaryTests_00ufxrf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vg86mx">
+          <text>contains(lower case(?), "bomb")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_162p6po">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ptj4tg">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ye42ev">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0h2o0zb">
+        <inputEntry id="UnaryTests_18nyu78">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16eprav">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cqemfs">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lq1n8x">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wvw5lr">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_09etuyq" name="Transaction details" />
+  <inputData id="InputData_1ewx3am" name="Customer details" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="is-fraud-decision">
+        <dc:Bounds height="80" width="180" x="230" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1nt54y4" dmnElementRef="InputData_09etuyq">
+        <dc:Bounds height="45" width="125" x="157" y="237" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1y0vvvc" dmnElementRef="InformationRequirement_1ps8b08">
+        <di:waypoint x="220" y="237" />
+        <di:waypoint x="290" y="180" />
+        <di:waypoint x="290" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_14in3kt" dmnElementRef="InputData_1ewx3am">
+        <dc:Bounds height="45" width="125" x="357" y="237" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0g9dbq3" dmnElementRef="InformationRequirement_080hkjy">
+        <di:waypoint x="420" y="237" />
+        <di:waypoint x="350" y="180" />
+        <di:waypoint x="350" y="160" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

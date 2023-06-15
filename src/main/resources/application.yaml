@@ -1,0 +1,15 @@
+server.port: 8080
+
+spring:
+  application:
+    name: process-manager
+
+zeebe:
+  client:
+    enabled: true
+    message:
+      timeToLive: 24h
+    security:
+      plaintext: true
+  broker:
+    gatewayAddress: "localhost:26500"
