@@ -36,5 +36,5 @@ data class ResolveCustomerInput(
 )
 
 data class ResolveCustomerOutput(
-    val customer: Customer
+        val customer: Customer
 )
